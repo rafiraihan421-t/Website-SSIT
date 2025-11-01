@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#">Informasi bahan ajar</a>
+      <a href="#">Tracking pengiriman</a>
+<div class="dropdown">
+    <button class="dropbtn">Dropdown
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Monitoring progress DO</a>
+      <a href="#">Rekap bahan ajar</a>
+    </div>
+  </div>
+      <a href="#">Histori transaksi bahan ajar</a>
+    </div>
+    <div class="container">
+      <h1>Dashboard aplikasi SITTA</h1>
+      <p class="text-greeting"></p>
+    </div>
+    <div class="container">
+        <div class="container-progressbar">
+            <div class="" style="display: flex; gap: 4px; align-items: center;">
+            <h2>No.DO</h2>
+            <input id="no-do" placeholder="NO DO" class="" style="height: 20px; width: 100%;"></input>
+            </div>
+            <button class="" id="cari-button" style="background-color: yellow; margin-left: auto;" onsubmit="searchNoDo()">Cari</button>
+        </div>
+        <div class="progressbar"></div>
+    </div>
+    <script src="./javascript/scriptdahsboard.js"></script>
+        <script type="module" src="./javascript/scriptdatatracking.js"></script>
+  </body>
+</html>
