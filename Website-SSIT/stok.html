@@ -1,12 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Informasi Bahan Ajar</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .kumpulan-data {
+      width: 35%;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .item:hover {
+      background: #f0f8ff;
+    }
+    .detail {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .text-header {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .cover {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .info label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    .info span {
+      display: block;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <script src="./javascript/script.js"></script>
+  <div class="container">
+    <div class="kumpulan-data"></div>
+    <div class="detail">
+      <div class="text-header">Pilih salah satu bahan ajar</div>
+      <div class="tampilan-data"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    export const dataBahanAjar = [
+      {
+        kodeLokasi: "0TMP01",
+        kodeBarang: "ASIP4301",
+        namaBarang: "Pengantar Ilmu Komunikasi",
+        jenisBarang: "BMP",
+        edisi: "2",
+        stok: 548,
+        cover: "img/pengantar_komunikasi.jpg"
+      },
+      {
+        kodeLokasi: "0JKT01",
+        kodeBarang: "EKMA4216",
+        namaBarang: "Manajemen Keuangan",
+        jenisBarang: "BMP",
+        edisi: "3",
+        stok: 392,
+        cover: "img/manajemen_keuangan.jpg"
+      },
+      {
+        kodeLokasi: "0SBY02",
+        kodeBarang: "EKMA4310",
+        namaBarang: "Kepemimpinan",
+        jenisBarang: "BMP",
+        edisi: "1",
+        stok: 278,
+        cover: "img/kepemimpinan.jpg"
+      },
+      {
+        kodeLokasi: "0MLG01",
+        kodeBarang: "BIOL4211",
+        namaBarang: "Mikrobiologi Dasar",
+        jenisBarang: "BMP",
+        edisi: "2",
+        stok: 165,
+        cover: "img/mikrobiologi.jpg"
+      },
+      {
+        kodeLokasi: "0UPBJJBDG",
+        kodeBarang: "PAUD4401",
+        namaBarang: "Perkembangan Anak Usia Dini",
+        jenisBarang: "BMP",
+        edisi: "4",
+        stok: 204,
+        cover: "img/paud_perkembangan.jpg"
+      }
+    ];
+
+    const listContainer = document.querySelector('.kumpulan-data');
+    const textHeader = document.querySelector('.text-header');
+    const tampilanData = document.querySelector('.tampilan-data');
+
+    dataBahanAjar.map((item) => {
+      const div = document.createElement('div');
+      div.classList.add('item');
+      div.textContent = item.namaBarang;
+      div.addEventListener('click', () => {
+        textHeader.textContent = 'Informasi Bahan Ajar';
+        tampilanData.innerHTML = `
+          <img src="${item.cover}" alt="${item.namaBarang}" class="cover"/>
+          <div class="info">
+            <label>Kode Lokasi:</label><span>${item.kodeLokasi}</span>
+            <label>Kode Barang:</label><span>${item.kodeBarang}</span>
+            <label>Nama Barang:</label><span>${item.namaBarang}</span>
+            <label>Jenis Barang:</label><span>${item.jenisBarang}</span>
+            <label>Edisi:</label><span>${item.edisi}</span>
+            <label>Stok:</label><span>${item.stok}</span>
+          </div>
+        `;
+      });
+      listContainer.appendChild(div);
+    });
+  </script>
 </body>
 </html>
